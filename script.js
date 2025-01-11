@@ -42,21 +42,21 @@ function generateTable() {
 
     const row = document.createElement('tr');
     row.innerHTML = `
-            <td>${date}</td>
-            <td>
-                <select class="lunch" onchange="updateData('${date}', 'lunch', this.value)">
-                    <option value="No" ${rowData.lunch === 'No' ? 'selected' : ''}>No</option>
-                    <option value="Yes" ${rowData.lunch === 'Yes' ? 'selected' : ''}>Yes</option>
-                </select>
-            </td>
-            <td>
-                <select class="dinner" onchange="updateData('${date}', 'dinner', this.value)">
-                    <option value="No" ${rowData.dinner === 'No' ? 'selected' : ''}>No</option>
-                    <option value="Yes" ${rowData.dinner === 'Yes' ? 'selected' : ''}>Yes</option>
-                </select>
-            </td>
-            <td class="deduction">0</td>
-        `;
+      <td>${date}</td>
+      <td>
+        <select class="lunch" onchange="updateData('${date}', 'lunch', this.value)">
+          <option value="No" ${rowData.lunch === 'No' ? 'selected' : ''}>No</option>
+          <option value="Yes" ${rowData.lunch === 'Yes' ? 'selected' : ''}>Yes</option>
+        </select>
+      </td>
+      <td>
+        <select class="dinner" onchange="updateData('${date}', 'dinner', this.value)">
+          <option value="No" ${rowData.dinner === 'No' ? 'selected' : ''}>No</option>
+          <option value="Yes" ${rowData.dinner === 'Yes' ? 'selected' : ''}>Yes</option>
+        </select>
+      </td>
+      <td class="deduction">0</td>
+    `;
     tableBody.appendChild(row);
   }
 
@@ -95,7 +95,7 @@ function updateSummary() {
   grandTotalElement.innerText = grandTotal;
 
   fixedBillElement.innerText = isBedRentApplicable
-    ? `Bed Rent: ₹${bedRentAmount}`
+    ? `Bed Rent Ruepees:${bedRentAmount}`
     : "No Bed Rent Applied";
 }
 
@@ -107,16 +107,28 @@ function resetTable() {
 function showTotalBill() {
   alert(`Your total bill is ₹${grandTotalElement.innerText}`);
 }
-
 function exportToPDF() {
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF();
 
-  pdf.text(`Mess Name: ${document.getElementById('messName').innerText}`, 10, 10);
- pdf.text(`Month: ${document.getElementById('monthSelect').selectedOptions[0].innerText}`, 10, 20);
+  
+  pdf.setFont("helvetica");
 
+  const headerRowHeight = 10; 
+  const headerRowYPosition = 10; 
+
+  pdf.setFillColor(135, 206, 235); 
+  pdf.rect(0, headerRowYPosition - 5, 210, headerRowHeight, 'F'); 
+
+  pdf.setTextColor(0, 0, 0); 
+
+
+  pdf.text(`Mess Name: ${document.getElementById('messName').innerText}`, 10, headerRowYPosition);
+  pdf.text(`Month: ${document.getElementById('monthSelect').selectedOptions[0].innerText}`, 120, headerRowYPosition);
+
+  // Table section
   pdf.autoTable({
-    startY: 30,
+    startY: headerRowYPosition + headerRowHeight, 
     head: [['Date', 'Lunch', 'Dinner', 'Bill (Rupees)']],
     body: Array.from(tableBody.rows).map(row => [
       row.cells[0].innerText,
@@ -126,12 +138,17 @@ function exportToPDF() {
     ])
   });
 
+ 
   const finalY = pdf.autoTable.previous.finalY + 10;
   pdf.text(`Total Tiffins: ${totaltiffinElement.innerText}`, 10, finalY);
-  pdf.text(`Total Mess Bill: Rupees ${totalDeductionsElement.innerText}`, 10, finalY + 10);
-  pdf.text(fixedBillElement.innerText, 10, finalY + 20);
-  pdf.text(`Total Bill: ₹${grandTotalElement.innerText}`, 10, finalY + 30);
+  pdf.text(`Total Mess Bill Rupees:${totalDeductionsElement.innerText}`, 100, finalY);
 
+ 
+  const finalY2 = finalY + 10;
+  pdf.text(fixedBillElement.innerText, 10, finalY2);
+  pdf.text(`Total Bill in Rupees:${grandTotalElement.innerText}`, 100, finalY2);
+
+  // Save PDF
   pdf.save("mess_bill.pdf");
 }
 
