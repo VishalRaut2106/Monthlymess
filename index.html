@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mess Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="askUserDetails()">
+    <div class="container">
+        <h1 id="messName">Mess Management</h1>
+        <div class="controls">
+            <label for="monthSelect">Select Month:</label>
+            <select id="monthSelect" onchange="generateTable()">
+                <option value="0">January</option>
+                <option value="1">February</option>
+                <option value="2">March</option>
+                <option value="3">April</option>
+                <option value="4">May</option>
+                <option value="5">June</option>
+                <option value="6">July</option>
+                <option value="7">August</option>
+                <option value="8">September</option>
+                <option value="9">October</option>
+                <option value="10">November</option>
+                <option value="11">December</option>
+            </select>
+            <button onclick="resetTable()">Reset Table</button>
+            <button onclick="showTotalBill()">Show My Bill</button>
+            <button onclick="exportToPDF()">Export to PDF</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                    <th>Bill (₹)</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+
+        <div class="summary">
+            <h3>Monthly Summary</h3>
+            <p>Total Tiffins: <span id="totaltiffin">0</span></p>
+            <p>Total Bills: ₹<span id="totalDeductions">0</span></p>
+            <p id="fixedBill">No Bed Rent Applied</p>
+            <p><strong>Total Bill: ₹<span id="grandTotal">0</span></strong></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Created by Vishal</p>
+        <div class="social-links">
+            <a href="https://github.com/VishalRaut2106" target="_blank">
+                <img src="github.png" alt="F" class="social-icon">
+            </a>
+            <a href="https://www.linkedin.com/rautvisha1" target="_blank">
+                <img src="linkedin.png" alt="LinkedIn" class="social-icon">
+            </a>
+            <a href="https://www.instagram.com/vishalraut.05" target="_blank">
+                <img src="insta.png" alt="Instagram" class="social-icon">
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+</body>
+
+</html>
