@@ -1,6 +1,7 @@
 # Mess Management System 🍽️
 
 Welcome to the **Mess Management System**! This application simplifies the management of mess records, helping users keep track of tiffin usage, deductions, and total bills effortlessly.
+🌐 Live Demo: https://vishalraut2106.github.io/Monthlymess/
 
 ## Features ✨
 
@@ -69,11 +70,6 @@ Welcome to the **Mess Management System**! This application simplifies the manag
 
 Contributions are welcome! If you’d like to improve this project, feel free to fork the repository and submit a pull request. Let’s make this project even better together!
 
-## License 📜
-
-This project is licensed under the MIT License. Feel free to use and modify it as you wish.
-
----
 
 Created with ❤️ by [Vishal](https://github.com/vishalraut2106).
 
