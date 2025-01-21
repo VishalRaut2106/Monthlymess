@@ -73,5 +73,3 @@ Contributions are welcome! If you’d like to improve this project, feel free to
 
 Created with ❤️ by [Vishal](https://github.com/vishalraut2106).
 
-enjoy
-
