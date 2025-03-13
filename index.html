@@ -8,7 +8,39 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body onload="askUserDetails()">
+<body>
+    <!-- Setup Modal -->
+    <div id="setupModal" class="modal">
+        <div class="modal-content">
+            <h2>Mess Setup</h2>
+            <form id="setupForm">
+                <div class="form-group">
+                    <label for="messNameInput">Mess Name:</label>
+                    <input type="text" id="messNameInput" required>
+                </div>
+                <div class="form-group">
+                    <label for="lunchRate">Lunch Rate (₹):</label>
+                    <input type="number" id="lunchRate" min="0" step="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="dinnerRate">Dinner Rate (₹):</label>
+                    <input type="number" id="dinnerRate" min="0" step="1" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="hasBedRent">
+                        Include Bed Rent
+                    </label>
+                </div>
+                <div class="form-group" id="bedRentGroup" style="display: none;">
+                    <label for="bedRent">Bed Rent (₹):</label>
+                    <input type="number" id="bedRent" min="0" step="1">
+                </div>
+                <button type="submit" class="btn-primary">Save Setup</button>
+            </form>
+        </div>
+    </div>
+
     <div class="container">
         <h1 id="messName">Mess Management</h1>
         <div class="controls">

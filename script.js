@@ -9,24 +9,38 @@ const totalDeductionsElement = document.getElementById('totalDeductions');
 const grandTotalElement = document.getElementById('grandTotal');
 const fixedBillElement = document.getElementById('fixedBill');
 
-function askUserDetails() {
-  const messName = prompt("Enter your Mess Name:");
+//input 
+const setupModal = document.getElementById('setupModal');
+const setupForm = document.getElementById('setupForm');
+const hasBedRentCheckbox = document.getElementById('hasBedRent');
+const bedRentGroup = document.getElementById('bedRentGroup');
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupModal.style.display = 'flex';
+});
+
+// bed rent
+hasBedRentCheckbox.addEventListener('change', () => {
+  bedRentGroup.style.display = hasBedRentCheckbox.checked ? 'block' : 'none';
+});
+
+// submission
+setupForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const messName = document.getElementById('messNameInput').value;
+  lunchTiffinRate = parseInt(document.getElementById('lunchRate').value) || 0;
+  dinnerTiffinRate = parseInt(document.getElementById('dinnerRate').value) || 0;
+  isBedRentApplicable = hasBedRentCheckbox.checked;
+  bedRentAmount = isBedRentApplicable ? parseInt(document.getElementById('bedRent').value) || 0 : 0;
+
+  // Update mess name
   document.getElementById('messName').innerText = messName;
 
-  lunchTiffinRate = parseFloat(prompt("Enter the Lunch Tiffin rate per day:")) || 0;
-  dinnerTiffinRate = parseFloat(prompt("Enter the Dinner Tiffin rate per day:")) || 0;
+  setupModal.style.display = 'none';
 
-  const hasBedRent = prompt("Do you have a bed rent? (Yes/No)").toLowerCase();
-  if (hasBedRent === "yes") {
-    isBedRentApplicable = true;
-    bedRentAmount = parseFloat(prompt("Enter the Bed Rent amount:")) || 0;
-  } else {
-    isBedRentApplicable = false;
-    bedRentAmount = 0;
-  }
-
-  updateSummary();
-}
+  generateTable();
+});
 
 function generateTable() {
   const month = parseInt(document.getElementById('monthSelect').value);
@@ -95,7 +109,7 @@ function updateSummary() {
   grandTotalElement.innerText = grandTotal;
 
   fixedBillElement.innerText = isBedRentApplicable
-    ? `Bed Rent Ruepees:${bedRentAmount}`
+    ? `Bed Rent: ₹${bedRentAmount}`
     : "No Bed Rent Applied";
 }
 
@@ -107,20 +121,21 @@ function resetTable() {
 function showTotalBill() {
   alert(`Your total bill is ₹${grandTotalElement.innerText}`);
 }
+
 function exportToPDF() {
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF();
 
-  
+
   pdf.setFont("helvetica");
 
-  const headerRowHeight = 10; 
-  const headerRowYPosition = 10; 
+  const headerRowHeight = 10;
+  const headerRowYPosition = 10;
 
-  pdf.setFillColor(135, 206, 235); 
-  pdf.rect(0, headerRowYPosition - 5, 210, headerRowHeight, 'F'); 
+  pdf.setFillColor(135, 206, 235);
+  pdf.rect(0, headerRowYPosition - 5, 210, headerRowHeight, 'F');
 
-  pdf.setTextColor(0, 0, 0); 
+  pdf.setTextColor(0, 0, 0);
 
 
   pdf.text(`Mess Name: ${document.getElementById('messName').innerText}`, 10, headerRowYPosition);
@@ -128,7 +143,7 @@ function exportToPDF() {
 
   // Table section
   pdf.autoTable({
-    startY: headerRowYPosition + headerRowHeight, 
+    startY: headerRowYPosition + headerRowHeight,
     head: [['Date', 'Lunch', 'Dinner', 'Bill (Rupees)']],
     body: Array.from(tableBody.rows).map(row => [
       row.cells[0].innerText,
@@ -138,12 +153,12 @@ function exportToPDF() {
     ])
   });
 
- 
+
   const finalY = pdf.autoTable.previous.finalY + 10;
   pdf.text(`Total Tiffins: ${totaltiffinElement.innerText}`, 10, finalY);
   pdf.text(`Total Mess Bill Rupees:${totalDeductionsElement.innerText}`, 100, finalY);
 
- 
+
   const finalY2 = finalY + 10;
   pdf.text(fixedBillElement.innerText, 10, finalY2);
   pdf.text(`Total Bill in Rupees:${grandTotalElement.innerText}`, 100, finalY2);
