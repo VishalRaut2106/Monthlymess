@@ -7,8 +7,17 @@ html {
     background-color: #f4f4f9;
 
 }
+:root{
+   --primary-color: #007bff;
+   --secondary-color: #0056b3;
+   --tertiary-color: #03478f;
+   --fourth-color: #f4f4f9;
+   --quinary-color: #336fbe;
+   --sixth-color: #e3e3e3;
+   
+}
 
-/* Container */
+/* Container  */
 .container {
     max-width: 1200px;
     margin: 20px auto;
@@ -18,11 +27,18 @@ html {
     border-radius: 8px;
 }
 
-h1 {
+h1  {
     text-align: center;
-    color: #333;
-    background-color: #f3bb76;
+    color: var(--primary-color);
+    background-color: var(--fourth-color);
     border-radius: 10px 10px 0 0;
+    font-size: 2em;
+    font-weight: bold;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Controls Section */
@@ -35,11 +51,25 @@ h1 {
     font-weight: bold;
     margin-right: 10px;
 }
+#monthSelect{
+    margin-right: 5px;
+    padding: 7px 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1em;
+}
+#monthSelect option {
+    background-color: var(--primary-color);
+    color: white;
+}
 
 button {
     margin: 5px 5px;
     padding: 10px 16px;
-    background-color: #007bff;
+   background-color: var(--primary-color);
     color: white;
     border: none;
     cursor: pointer;
@@ -48,7 +78,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: var(--secondary-color);
 }
 
 button:focus {
@@ -72,12 +102,12 @@ table td {
 
 /* Apply red color to the second column (Lunch) */
 table tr:nth-of-type(2n) {
-    background-color: #f2eccd;
+    background-color: var(--fourth-color);
 }
 
 
 thead {
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: white;
 }
 
@@ -89,48 +119,14 @@ thead {
     background-color: #e3e3e3;
     border-radius: 10px 10px 0 0;
 }
-
-.summary h3 {
-    margin-bottom: 10px;
-    color: #333;
-    background-color: #3e97f6;
-    border-radius: 10px 10px 0 0;
-}
-
-/* Footer Styles */
-footer {
+h3{
     text-align: center;
+    font-size: 1.1em;
     margin-top: 20px;
-    padding: 10px;
-    background-color: #f8f9fa;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
-
-footer p {
-    margin: 5px 0;
-    font-size: 1em;
-    color: #555;
-}
-
-.social-links {
-    margin-top: 10px;
-}
-
-.social-links a {
-    margin: 0 10px;
-}
-
-.social-icon {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
-    transition: 0.25 ease-in;
-}
-
-.social-icon:hover {
-    width: 26px;
-    height: 26px;
-    transform: scale(1.2)
+    background-color: #007bff;
+    border-radius: 10px 10px 0 0;
+    padding: 10px 0;
+    margin-bottom: 20px;
 }
 
 /* Responsive Design */
@@ -190,7 +186,7 @@ footer p {
     }
 }
 
-/* Modal Styles */
+/* input modal */
 .modal {
     display: none;
     position: fixed;
@@ -198,14 +194,14 @@ footer p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--sixth-color);
     z-index: 1000;
     justify-content: center;
     align-items: center;
 }
 
 .modal-content {
-    background-color: white;
+    background-color: var(--fourth-color);
     padding: 2rem;
     border-radius: 8px;
     width: 90%;
@@ -243,7 +239,7 @@ footer p {
 }
 
 .btn-primary {
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     color: white;
     padding: 0.75rem 1.5rem;
     border: none;
@@ -256,5 +252,6 @@ footer p {
 }
 
 .btn-primary:hover {
-    background-color: #45a049;
+    background-color: var(--secondary-color);
+    
 }
