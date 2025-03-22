@@ -128,6 +128,60 @@ h3{
     padding: 10px 0;
     margin-bottom: 20px;
 }
+/* Footer Styles */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: var(--fourth-color);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #555;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    margin: 0 10px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    transition: all 0.3s ease;
+    color: #333;
+}
+
+.social-icon:hover {
+    transform: scale(1.2) rotate(5deg);
+    filter: drop-shadow(0 0 10px rgba(241, 2, 2, 0.5));
+}
+
+
+.fa-github:hover {
+    color: #333;
+}
+
+.fa-linkedin-in:hover {
+    color: #0077b5;
+}
+
+.fa-instagram:hover {
+    color: #e4405f;
+}
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
