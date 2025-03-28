@@ -31,7 +31,6 @@ Welcome to the **Mess Management System**! This application simplifies the manag
 5. **Reset Data:**
    - Use the "Reset Table" button to clear all saved records.
 
-## Demo 🖥️
 
 
 
