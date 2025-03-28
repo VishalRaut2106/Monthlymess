@@ -70,5 +70,5 @@ Welcome to the **Mess Management System**! This application simplifies the manag
 Contributions are welcome! If you’d like to improve this project, feel free to fork the repository and submit a pull request. Let’s make this project even better together!
 
 
-Created with ❤️ by [Vishal](https://github.com/vishalraut2106).
+Created with ❤️ by [Vishal Raut](https://github.com/vishalraut2106).
 
