@@ -1,6 +1,6 @@
-# PRATICAL NO. 5
+**PRATICAL NO. 5**
 
-
+```cpp
 int led = 12;
 void setup() {
   pinMode(led, OUTPUT);  // Set the LED pin as an output
@@ -11,15 +11,17 @@ void loop() {
   digitalWrite(led, LOW);  // Turn the LED off
   delay(2000);  // Wait for 2000 milliseconds (2 seconds)
 }
+```
 
- # PRATICAL NO. 6
+**PRATICAL NO. 6**
 
+```cpp
 int counter;
 void setup(){
   Serial.begin(9600);
-  	pinMode(11,OUTPUT);
-  	pinMode(12,OUTPUT);
-  	pinMode(13,OUTPUT);
+           pinMode(11,OUTPUT);
+           pinMode(12,OUTPUT);
+           pinMode(13,OUTPUT);
 }
 void loop(){
   if(counter==300)
@@ -48,10 +50,11 @@ void loop(){
   delay(500);
   Serial.println(counter);
 }
+```
 
+**PRATICAL NO. 7**
 
-# PRATICAL NO. 7
-
+```cpp
 int mychar = 0;
 
 void setup() {
@@ -93,26 +96,30 @@ void loop() {
     }
   }
 }
+```
 
+**PRATICAL NO. 8**
 
-# PRATICAL NO. 8
+```cpp
+int out; 
+void setup() { 
+  Serial.begin(9600); 
+} 
 
-int out;  
-void setup() {  
-  Serial.begin(9600);  
-}  
-  
-void loop() {   
-if (Serial.available() > 0) {    	
-int num = Serial.parseInt();  
-Serial.print("I received:");   	Serial.println(num);   
-out = num * num;  
-Serial.print("Enter the Number for Square: ");  
-Serial.println(out);  
-  }  
-}    
+void loop() {  
+if (Serial.available() > 0) {         
+int num = Serial.parseInt(); 
+Serial.print("I received:");   Serial.println(num);  
+out = num * num; 
+Serial.print("Enter the Number for Square: "); 
+Serial.println(out); 
+  } 
+}   
+```
 
-# PRATICAL NO. 9
+**PRATICAL NO. 9**
+
+```cpp
 int redPin = 11;
 int greenPin = 9;
 int bluePin = 10;
@@ -153,10 +160,12 @@ void loop() {
   Serial.println(blueValue);
 
   delay(100);
-} 
+}
+```
 
-# PRATICAL NO. 10 
+**PRATICAL NO. 10**
 
+```cpp
 #include <dht11.h>
 
 #define DHT11PIN A0
@@ -169,12 +178,12 @@ void setup() {
 
 void loop() {
   Serial.println();
-  
+
   int chk = DHT11.read(DHT11PIN);
-  
+
   float h = DHT11.humidity;
   float t = DHT11.temperature;
-  
+
   Serial.print("Humidity (%): ");
   Serial.println(h);
 
@@ -183,9 +192,11 @@ void loop() {
 
   delay(2000);  // Wait for 2 seconds
 }
+```
 
-# PRATICAL NO. 11 
+**PRATICAL NO. 11**
 
+```cpp
 float mintemp;
 float maxtemp;
 bool initialtemp = true;
@@ -223,9 +234,12 @@ void loop() {
 
   Serial.println("MINIMUM TEMPERATURE:");
   Serial.println(mintemp);
-} 
-# PRATICAL NO. 12
+}
+```
 
+**PRATICAL NO. 12**
+
+```cpp
 void setup() {
   Serial.begin(9600);
   pinMode(12, OUTPUT);
@@ -233,7 +247,7 @@ void setup() {
 }
 
 void loop() {
-  int s1 = analogRead(A0); 
+  int s1 = analogRead(A0);
   Serial.println(s1);
   delay(200);
 
@@ -246,4 +260,4 @@ void loop() {
     digitalWrite(13, HIGH);
   }
 }
-
+```
